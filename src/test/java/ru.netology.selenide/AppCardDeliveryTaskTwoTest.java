@@ -23,7 +23,7 @@ public class AppCardDeliveryTaskTwoTest {
         int dayToAdd = 7;
         int defaultAddedDays = 3;
 
-        $("[data-test-id='city']input").setValue(city.substring(0,2));
+        $("[data-test-id='city']input").setValue(city.substring(0, 2));
         $$(".menu-item__control").findBy(text(city)).click();
         $("[data-test-id='date'] input").click();
         if (!generateDate(defaultAddedDays,"MM").equals(generateDate(dayToAdd, "MM"))){
