@@ -26,7 +26,7 @@ public class AppCardDeliveryTaskTwoTest {
         $("[data-test-id='city']input").setValue(city.substring(0,2));
         $$(".menu-item__control").findBy(text(city)).click();
         $("[data-test-id='date'] input").click();
-        if (!generateDate(defaultAddedDays,"mm").equals(generateDate(dayToAdd, "mm"))){
+        if (!generateDate(defaultAddedDays,"MM").equals(generateDate(dayToAdd, "MM"))){
             $("[data-step='1']").click();
         }
         $$(".calendar__day").findBy(text(generateDate(dayToAdd,"d"))).click();
@@ -36,6 +36,6 @@ public class AppCardDeliveryTaskTwoTest {
         $("button.button").click();
         $(".notification__content")
                 .shouldBe(com.codeborne.selenide.Condition.appear, Duration.ofSeconds(15))
-                .shouldHave(Condition.exactText("Встреча успешно забронирована на " + generateDate(dayToAdd, "dd.mm.yyyy")));
+                .shouldHave(Condition.exactText("Встреча успешно забронирована на " + generateDate(dayToAdd, "dd.MM.yyyy")));
     }
 }
