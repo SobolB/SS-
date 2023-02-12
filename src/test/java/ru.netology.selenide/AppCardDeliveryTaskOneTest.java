@@ -26,8 +26,8 @@ public class AppCardDeliveryTaskOneTest {
         $("[data-test-id='date'] input").sendKeys(currentDate);
         $("[data-test-id='name'] input").setValue("Иванов Иваныч Иван");
         $("[data-test-id='phone'] input").setValue("+79244443388");
-        $("[data-test-id='agreement'] input").click();
-        $("button.buttton").click();
+        $("[data-test-id='agreement']").click();
+        $("button.button").click();
         $(".notification__content")
                 .shouldBe(Condition.visible, Duration.ofSeconds(15))
                 .shouldHave(Condition.exactText("Встреча успешно забронирована на " + currentDate));
