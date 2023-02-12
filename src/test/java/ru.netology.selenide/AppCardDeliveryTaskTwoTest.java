@@ -22,14 +22,13 @@ public class AppCardDeliveryTaskTwoTest {
         String city="Рязань";
         int dayToAdd = 7;
         int defaultAddedDays = 3;
-
-        $("[data-test-id='city']input").setValue(city.substring(0, 2));
+        $("[data-test-id='city'] input").setValue(city.substring(0, 2));
         $$(".menu-item__control").findBy(text(city)).click();
         $("[data-test-id='date'] input").click();
         if (!generateDate(defaultAddedDays,"MM").equals(generateDate(dayToAdd, "MM"))){
             $("[data-step='1']").click();
         }
-        $$(".calendar__day").findBy(text(generateDate(dayToAdd,"d"))).click();
+        $$(".calendar__day").findBy(text(generateDate(dayToAdd, "d"))).click();
         $("[data-test-id='name'] input").setValue("Иванов-Иваныч Иван");
         $("[data-test-id='phone'] input").setValue("+78005553535");
         $("[data-test-id='agreement']").click();
