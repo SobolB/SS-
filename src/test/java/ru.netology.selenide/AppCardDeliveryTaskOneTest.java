@@ -19,17 +19,17 @@ public class AppCardDeliveryTaskOneTest {
     }
     @Test
     public void shouldBeSuccessfullyCompleted(){
-        $x(".//span[@data-test-id='city']//input").setValue("Самара");
-        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
-        $("[data-test-id='date'] input").setValue(planningDate);
-        $x(".//span[@data-test-id='name']//input").setValue("Иванов Иван");
-        $x(".//span[@data-test-id='phone']//input").setValue("+79178173838");
-        $x(".//label[@data-test-id='agreement']").click();
-        $x(".//span[contains(text(),'Забронировать')]").click();
-        notification.should(visible, ofSeconds(15));
-        notification.$x(".//div[@class='notification__title']").should(text("Успешно!"));
-        notification.$x(".//div[@class='notification__content']").should(text("Встреча успешно забронирована на " + planningDate));
-        notification.$x(".//button").click();
-        notification.should(hidden);
+        open("http://localhost:9999");
+        $("[data-test-id='city'] input").setValue("Рязань");
+        String currentDate = generateDate(7,"dd.MM.yyyy");
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
+        $("[data-test-id='date'] input").sendKeys(currentDate);
+        $("[data-test-id='name'] input").setValue("Иванов Иваныч Иван");
+        $("[data-test-id='phone'] input").setValue("+79244443388");
+        $("[data-test-id='agreement'] input").click();
+        $("button.buttton").click();
+        $(".notification__content")
+                .shouldBe(Condition.visible, Duration.ofSeconds(15))
+                .shouldHave(Condition.exactText("Встреча успешно забронирована на " + currentDate));
     }
 }
