@@ -30,12 +30,12 @@ public class AppCardDeliveryTaskTwoTest {
             $("[data-step='1']").click();
         }
         $$(".calendar__day").findBy(text(generateDate(dayToAdd,"d"))).click();
-        $("[data-test-id='name'] input").setValue("Иванов Иваныч Иван");
-        $("[data-test-id='phone'] input").setValue("+79244443388");
+        $("[data-test-id='name'] input").setValue("Иванов-Иваныч Иван");
+        $("[data-test-id='phone'] input").setValue("+78005553535");
         $("[data-test-id='agreement']").click();
         $("button.button").click();
         $(".notification__content")
-                .shouldBe(com.codeborne.selenide.Condition.appear, Duration.ofSeconds(15))
+                .shouldBe(Condition.visible, Duration.ofSeconds(15))
                 .shouldHave(Condition.exactText("Встреча успешно забронирована на " + generateDate(dayToAdd, "dd.MM.yyyy")));
     }
 }
